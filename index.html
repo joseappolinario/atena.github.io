@@ -10,20 +10,21 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <style>
-    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    /* Remove the navbar's default margin-bottom and rounded borders
+      Remova as bordas com margem inferior e arredondada padrão da barra de navegação*/ 
     .navbar {
       margin-bottom: 0;
       border-radius: 0;
     }
     
-    /* Add a gray background color and some padding to the footer */
+    /* Add a gray background color and some padding to the footer 
+      Adicionar uma cor de plano de fundo cinza e algum preenchimento ao rodapé*/
     footer {
-      background-color: #f2f2f2;
+      background-color: grey;
       padding: 25px;
     }
   </style>
 </head>
-
 <body>
 <header>
 <nav class="navbar navbar-inverse">
@@ -39,10 +40,10 @@
 
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Gallery</a></li>
-        <li><a href="#">Contact</a></li>
+        <li class="active"><a href="#">Casa</a></li>
+        <li><a href="#">Sobre</a></li>
+        <li><a href="#">Galeria</a></li>
+        <li><a href="#">Contato</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
@@ -50,15 +51,13 @@
     </div>
   </div>
 </nav>
-<div class="jumbotron">
+<div class=>
   <div class="container text-center">
-    <h1>UFPRTV-Lab</h1>      
-    <p>Pagina de teste de transmissão ao vivo.</p>
+    <h1>Mosaico</h1>      
   </div>
 </div>
-
 <div class="container-fluid bg-3 text-center">    
-  <h3>Nginx - 2.1</h3><br>
+  
   <div class="row">
     <div class="col-sm-3">
                      <h3>eMidia</h3>
@@ -69,11 +68,12 @@
     <div class="col-sm-3"> 
     <h3>UFPR TV-Teste</h3>
         <script src="hls.light.min.js"></script>
-                        <video id="video" controls poster="../ufpr.png" style="width: 100%" autoplay></video>
+                        <video id="video" controls poster="img/preview.jpg" style="width: 60%" autoplay></video>
                          <source src="http://200.17.247.224/eventos/streamteste.m3u8" type="vnd.apple.mpegURL">
 
                         
-                        <script>
+                     
+        <script>
                         if(Hls.isSupported()) {
                         var video = document.getElementById('video');
                         var hls = new Hls();
@@ -115,10 +115,10 @@
       <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
     </div>
   </div>
-</div><br><br>
+</div><br>
     </header>
 <footer class="container-fluid text-center">
-  <p>Footer Text</p>
+  <p>informações do rodape</p>
 </footer>
 
 </body>
