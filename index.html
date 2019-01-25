@@ -117,6 +117,93 @@
   </div>
 </div><br>
     </header>
+  
+  #A procura de um servidor de stream perfeito
+
+Esse é o relato de nossas aventuras e desventuras na busca incansável e teimosa ao santo graal das transmissões através da internet. Durante muitas anos estivemos a procura de um servidor de stream que nos desse independência para fazer transmissões online, passamos por diversas fases, testamos diversas soluções, tanto de software proprietário (Wowza) quanto de software livre, mas cada uma dessas soluções nos trazia impedimentos, financeiro ou de conhecimento técnico.  Vamos colocar o ano de 2017 como o ano da aplicação com resultados reais, deixando os longos anos anteriores de testes e estudos.Os fatos,  a UFPR TV precisava de um software que além de transmitir nossa programação ao vivo através da internet, deveria ter a capacidade de guardar de forma organizada os antigos programas feitos no formato analogico (vamos chama-lo de Projeto UFPRTV Acervo) em fitas vhs, minidv, etc, após várias pesquisas descobrimos um software, na sua versão gratuita, que oferecia essa possibilidade, seu nome é Emby https://emby.media/  -  https://github.com/mediabrowser 
+
+Video aula para instalação do software https://www.youtube.com/watch?v=_3FNwAQgBS0) um media server que tem a capacidade de agrupar vídeos e disponibilizá-los através da internet. Essa plataforma também possui um gerador de  fluxo de vídeo ao vivo. Instalamos o software em uma máquina com Lubuntu ,  transferimos para para o media server  os antigos programas, tivemos que criar uma estrutura para capturar esses programas que originariamente estavam em fitas (vhs, minidv, dvd, etc) foi criada uma estrutura com os seguintes equipamentos :
+- computador, 
+- placa de captura, 
+- player para fitas mini dv,
+- video cassete  para fitas vhs,
+
+###### Mas ainda não era a solução que desejávamos, necessitamos de um sistema robusto, dedicado e principalmente que fosse totalmente livre. https://www.youtube.com/watch?v=MBiw57swnsI
+
+###### Foi nesse momento que procuramos o  **NGINX - Rtmp**, servidor que já havíamos visto no passado, mas por falta de conhecimento técnico não foi possivel usa-lo.  https://github.com/arut/nginx-rtmp-module/  e http://nginx-rtmp.blogspot.com.br/.
+
+###### Estudar e entender o funcionamento desse servidor,  passou a ser nosso principal foco, foram meses de estudos e muitas e muitas e muitas e intermináveis conversas, trocas de emails, e grandes parcerias com figuras incríveis como Paulo Henrique do FTSL  que nos apresentou inicialmente a edição LibreOffice Magazine – Dezembro 2016 |  LibreOffice Magazine com um artigo de David Jourdain, intitulado Video Broadcast, mais Open Source, mais Linux: É possível?  nesse artigo encontramos respostas e soluções, após ler esse artigo fiquei tão empolgado que enviei um email ao Sr. David Jourdain e tomei a liberdade de elogiar o artigo e fazer um convite para ele visitar nosso laboratório, o pior aconteceu porque ele, o sr David aceitou o convite e veio nos visitar, para minha surpresa, e dessa visita outras vieram que geraram amizades e troca de conhecimentos. Finalmente saímos da teoria e instalamos o servidor em uma máquina especialmente montada com peças de nove computadores velhos. Mas a instalação do servidor foi apenas um pequeno passo, além da instalação e configuração do servidor outros softwares eram necessários para que nosso projeto fosse em frente, precisávamos de um software que fosse gerador de sinal o encoder, o escolhido evidentemente foi o OBS Studio. Mas ainda não era a solução que desejávamos, necessitamos de um sistema robusto, dedicado e principalmente que fosse totalmente livre. https://www.youtube.com/watch?v=MBiw57swnsI 
+
+Foi nesse momento que procuramos o   NGINX - Rtmp, servidor que já havíamos visto no passado, mas por falta de conhecimento técnico não foi possivel usa-lo.  https://github.com/arut/nginx-rtmp-module  / http://nginx-rtmp.blogspot.com.br/ .
+Estudar e entender o funcionamento desse servidor,  passou a ser nosso principal foco, foram meses de estudos e muitas e muitas e muitas e intermináveis conversas, trocas de emails, e grandes parcerias com figuras incríveis como Paulo Henrique do FTSL  que nos apresentou inicialmente a edição LibreOffice Magazine – Dezembro 2016 |  LibreOffice Magazine com um artigo de David Jourdain, intitulado Video Broadcast, mais Open Source, mais Linux: É possível?  nesse artigo encontramos respostas e soluções, após ler esse artigo fiquei tão empolgado que enviei um email ao Sr. David Jourdain e tomei a liberdade de elogiar o artigo e fazer um convite para ele visitar nosso laboratório, o pior aconteceu porque ele, o sr David aceitou o convite e veio nos visitar, para minha surpresa, e dessa visita outras vieram que geraram amizades e troca de conhecimentos. Finalmente saímos da teoria e instalamos o servidor em uma máquina especialmente montada com peças de nove computadores velhos. Mas a instalação do servidor foi apenas um pequeno passo, além da instalação e configuração do servidor outros softwares eram necessários para que nosso projeto fosse em frente, precisávamos de um software que fosse gerador de sinal o encoder, o escolhido evidentemente foi o OBS Studio.
+Esse software tem sido essencial para o nosso projeto, e vem crescendo a cada dia. E fomos a montagem da estrutura :
+- 1 sistema operacional Linux (Lubuntu)
+- Ngnix-Rtmp
+- computador 2 sistema operacional Linux (Lubuntu)
+- Obs Studio
+
+Com essa estrutura começamos a enviar fluxo de vídeo através de 1 computador com OBS Studio para o Nginx-Rtmp, no segundo momento colocamos mais 3 computadores, cada um com uma instalação do Obs Studio, enviando sinal para o Nginx-Rtmp, nosso interesse era saber qual o limite do servidor, principalmente por ser uma máquina não muito potente. finalmente colocamos seis computadores enviando fluxo para o Nginx-Rtmp e o desempenho dele foi excepcional.
+Resolvemos criar o site. batizado inicialmente como Mosaico, para demonstração desses fluxos, evidentemente o site está hospedado no Nginx e a pequena sala que ocupamos foi batizada como LabTV UFPR. Carlos Baldo (um dos desenvolvedores dessa plataforma) pensou em agrupar os programas da UFPR TV em grades de acordo com suas pertinências, com isso ele criou o :
+
+- UFPR Educação	- programas dessa grade - Vocação, Em Tese, etc
+- UFPR Cultur  	- programas dessa grade - Caldo de Cultura, Persona, etc,
+- UFPR TV Acervo - programas dessa grade - Programação antiga Emby
+- TV Oficial - programas dessa grade - Grade Oficial da UFPRTV
+- UFPR	- transmissão ao vivo dos Colegiados Superiores
+- UFPR	- busdoor 
+
+Com a criação do Mosaico o conceito de poder monitorar todos os programas/projetos em um único lugar, foi materializado. 
+
+Montamos um segundo servidor Nginx no centro de computador eletronica CCE, para receber o fluxo do sinal oficial da UFPRTV.
+Foi montado um terceiro servidor Nginx na PRPPG para receber o fluxo de um novo projeto aulas online que vamos explicar a seguir.
+
+
+A PRPPG- Pró-reitoria de pós graduação da UFPR, na figura dos Professores Francisco (pró reitor) e Rodack (coordenador da pós) procurou o Professor Carlos Rocha -Diretor da UFPR-TV,  para saber se nós poderíamos transmitir aulas online com a estrutura da UFPRTV, nosso diretor comentou sobre o projeto Mosaico e propôs uma adequação da nossa estrutura para ministrar aulas de pós graduação online. Para fazer isso pegamos a estrutura do mosaico com apenas quatros telas, onde as duas telas superiores teriam a imagem do professor e dos slides da aula, e as duas telas inferiores seriam ocupadas por um chat do sistema Siga/PRPPG e uma tela de login também do sistema Siga/PRPPG. Com isso estreamos uma estrutura de aulas online, importante frisar que essas estrutura não é EAD -ensino a distância, o conceito apresentado pela PRPPG são aulas online, sou seja os alunos logados ao sistema devem no decorrer da aula responder perguntas criamos pelo professor. Durante o segundo semestre de 2017 todas as quartas a tarde as aulas eram ministradas, atualmente,2018, estamos na segunda turma.
+
+Foi acordado que essas aulas seriam enviadas para a o Youtube para posterior uso. Para realizar essa tarefa montamos a seguinte estrutura : 
+	-Computador 1 - com sistema operacional Win10 
+	-Obs studio Win10
+	-Placa de captura black magic interna
+	-Camera filmadora Panasonic
+	-mesa de áudio ligada a câmera panasonic
+	-Webcam conectada por usb
+	-enviando fluxo para o Nginx
+	-Computador 2 - com sistema operacional Win10 
+	-Obs studio Win10
+	-Data show
+	-enviando fluxo para o Nginx
+	-Computador  - com sistema operacional Win10 
+	-Obs studio Win10 capturando o site e enviando para o Youtube
+
+A função do LabTv UFPR é testar e criar novas tecnologias, foi com essa visão que resolvemos criar uma radio web totalmente e novamente com software livre, usamos o servidor de áudio Icecast conjugado com outro software chamado Foolbar2000	
+
+Definimos ainda que deveria haver uma página específica para teste de stream e foi criado mais uma página web para eventos especiais chamada livestream ufpr eventos 
+
+Podemos notar as possibilidades de ter um servidor de stream são imensas, de acordo com pesquisas pessoais, a única instituição pública de ensino superior do país que possui um servidor de stream é a UFPR, e tudo isso foi realizado com software livre ou seja sem gastar um centavo de dinheiro público. Hoje uma licença de um servidor de stream tem um valor aproximado de $ 7.000,00 (sete mil dolares). 
+
+Atualmente estamos  estudando o FFmpeg para implantar um sinal adaptável, mas o que seria o sinal adaptável? O fluxo de alta definição de 720p a 2048 kbps é enviado para o Nginx e reenviado para o FFmpeg que transforma esse fluxo em faixas de :
+
+> Fluxo de definição padrão de 480p a 448 kbps
+Fluxo de Definição Padrão 540p a 1152 kbps
+Fluxo de alta definição de 720p a 2048 kbps
+
+o servidor verifica o tipo de banda de internet do usuário e manda o fluxo adequado, dessa forma não haverá travamento do vídeo.
+
+Futuros projetos
+Queremos total independência, por isso estamos estudando uma forma de disponibilizar todo o nosso acervo videográfico em uma plataforma de vídeos independente. Encontramos um software chamado YouPHPTube, PORTAL DE VÍDEOS com a aplicação Open Source, a implantação desse novo elemento dentro do Nginx será para um futuro próximo.
+
+
+
+
+
+![](http://)
+[](http://)
+@[]()
+
+
+
+
+  
 <footer class="container-fluid text-center">
   <p>informações do rodape</p>
 </footer>
